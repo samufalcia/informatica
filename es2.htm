@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatore e Tabellina</title>
+</head>
+<body>
+
+<div>
+  <p>Contatore: <span id="contatore-output"></span></p>
+  <p>Tabellina:</p>
+  <div id="tabellina-output" style="display: flex; flex-wrap: wrap;"></div>
+</div>
+
+<script>
+  let contatore = 1;
+
+  function stampaTabellina(numero) {
+    let output = '<div style="margin-right: 20px;">';
+    for (let i = 1; i <= 10; i++) {
+      output += numero * i + '<br>';
+    }
+    output += '</div>';
+    document.getElementById('tabellina-output').innerHTML += output;
+  }
+
+  function avviaContatore() {
+    if (contatore <= 5) {
+      document.getElementById('contatore-output').innerHTML = contatore;
+      contatore++;
+      setTimeout(avviaContatore, 1000);
+    } else if (contatore === 6) {
+      for (let i = 1; i <= 10; i++) {
+        setTimeout(function() {
+          stampaTabellina(i);
+        }, i * 1000);
+      }
+      contatore++;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(avviaContatore, 1000);
+  });
+</script>
+
+</body>
+</html>
