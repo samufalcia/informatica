@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .quadrato {
+            width: 10px;
+            height: 10px;
+            border: 1px solid nero;
+            display: inline-block;
+            margin: 5px; 
+        }
+    </style>
+    <title>Creazione Dinamica di Quadrati</title>
+</head>
+<body>
+    <label for="numeroDiv">Inserisci il numero di quadrati:</label>
+    <input type="number" id="numeroDiv" min="1">
+    <button onclick="creaQuadrati()">Crea Quadrati</button>
+
+    <script>
+        function creaQuadrati() {
+           
+            var numeroQuadrati = document.getElementById("numeroDiv").value;
+
+           
+            if (numeroQuadrati > 0) {
+               
+                var contenitore = document.body;
+
+            
+                for (var i = 0; i < numeroQuadrati; i++) {
+                   
+                    var nuovoQuadrato = document.createElement("div");
+                    nuovoQuadrato.className = "quadrato";
+
+                   
+                    nuovoQuadrato.style.backgroundColor = coloreRandom();
+
+                    
+                    contenitore.appendChild(nuovoQuadrato);
+                }
+            }
+        }
+
+        
+        function coloreRandom() {
+            var letters = '0123456789ABCDEF';
+            var colore = '#';
+            for (var i = 0; i < 6; i++) {
+                colore += letters[Math.floor(Math.random() * 16)];
+            }
+            return colore;
+        }
+    </script>
+</body>
+</html>
