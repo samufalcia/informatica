@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .quadrato {
+      width: 40px;
+      height: 40px;
+      margin: 2px;
+      display: inline-block;
+      border: 1px  solid black;
+    }
+
+    .grigio-chiaro {
+      background-color: lightgrey;
+
+    }
+
+    .grigio-scuro {
+      background-color: darkgrey; 
+    }
+  </style>
+  <script>
+    function creaQuadrato(numero) {
+      var div = document.createElement("div");
+      div.className = "quadrato";
+
+      if (numero % 2 === 0) {
+        div.style.backgroundColor = "lightgrey";
+      } else {
+        div.style.backgroundColor = "darkgrey"; 
+      }
+
+      return div;
+    }
+
+    function creaTabella() {
+      var container = document.getElementById("container");
+      var counter = 0;
+
+      for (var i = 1; i <= 100; i++) {
+        var quadrato = creaQuadrato(i);
+
+        container.appendChild(quadrato);
+
+        counter++;
+
+        if (counter === 10) {
+          container.appendChild(document.createElement("br"));
+          counter = 0;
+        }
+      }
+    }
+  </script>
+</head>
+<body onload="creaTabella()">
+  <div id="container"></div>
+</body>
+</html>
